@@ -32,15 +32,15 @@ SCPinstal="$HOME/install"
 #ln -s /usr/share/zoneinfo/America/Argentina/Tucuman /etc/localtime &>/dev/null
 cp -f $0 ${ADMRufu}/install.sh
 rm $(pwd)/$0 &> /dev/null
-if [[ $(which install-LIC) = "" ]]; then
-  wget -O /usr/bin/install-LIC 'https://github.com/rudi9999/Rufu-LIC/raw/main/install-LIC'; chmod +x /usr/bin/install-LIC &>/dev/null
-fi
-install-LIC
-[[ $? = 1 ]] && exit
+#if [[ $(which install-LIC) = "" ]]; then
+  #wget -O /usr/bin/install-LIC 'https://github.com/rudi9999/Rufu-LIC/raw/main/install-LIC'; chmod +x /usr/bin/install-LIC &>/dev/null
+#fi
+#install-LIC
+#[[ $? = 1 ]] && exit
 
-stop_install(){
-  title "INSTALACION CANCELADA"
-  exit
+#stop_install(){
+  #title "INSTALACION CANCELADA"
+  #exit
  }
 
 time_reboot(){
@@ -56,7 +56,7 @@ time_reboot(){
 }
 
 repo_install(){
-  link="https://raw.githubusercontent.com/rudi9999/ADMRufu/main/Repositorios/$VERSION_ID.list"
+  link="https://raw.githubusercontent.com/Loveago/ADMRufu/main/Repositorios/$VERSION_ID.list"
   case $VERSION_ID in
     8*|9*|10*|11*|16.04*|18.04*|20.04*|20.10*|21.04*|21.10*|22.04*) [[ ! -e /etc/apt/sources.list.back ]] && cp /etc/apt/sources.list /etc/apt/sources.list.back
                                                                     wget -O /etc/apt/sources.list ${link} &>/dev/null;;
@@ -142,7 +142,7 @@ install_start(){
   print_center -ama 'Esto modificara la hora y fecha automatica\nsegun la Zona horaria establecida.'
   msg -bar
   read -rp "$(msg -ama " Modificar la zona horaria? [S/N]:") " -e -i N opcion
-  [[ "$opcion" != @(n|N) ]] && source <(curl -sSL "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/online/timeZone.sh")
+  [[ "$opcion" != @(n|N) ]] && source <(curl -sSL "https://raw.githubusercontent.com/Loveago/ADMRufu/main/online/timeZone.sh")
   title "INSTALADOR ADMRufu"
   repo_install
   mysis=$(echo "$VERSION_ID"|cut -d '.' -f1)
@@ -224,9 +224,9 @@ wireguard.sh
 ws-cdn.sh
 WS-Proxy.js'
 
-lisArq="https://raw.githubusercontent.com/rudi9999/ADMRufu/main/old"
+lisArq="https://raw.githubusercontent.com/Loveago/ADMRufu/main/old"
 
-ver=$(curl -sSL "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/vercion")
+ver=$(curl -sSL "https://raw.githubusercontent.com/Loveago/ADMRufu/main/vercion")
 echo "$ver" > ${ADMRufu}/vercion
 
 title -ama '[Proyect by @Rufu99]'
@@ -247,7 +247,7 @@ for arqx in $(echo $arch); do
   }
 done
 
-url='https://github.com/rudi9999/ADMRufu/raw/main/Utils'
+url='https://github.com/Loveago/ADMRufu/raw/main/Utils'
 
 autoStart="${ADMRufu}/bin" && [[ ! -d $autoStart ]] && mkdir $autoStart
 varEntorno="${ADMRufu}/sbin" && [[ ! -d $varEntorno ]] && mkdir $varEntorno
