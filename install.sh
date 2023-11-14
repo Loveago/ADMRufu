@@ -38,10 +38,10 @@ rm $(pwd)/$0 &> /dev/null
 #install-LIC
 #[[ $? = 1 ]] && exit
 
-stop_install(){
-  title "INSTALACION CANCELADA"
-  exit
- }
+#stop_install(){
+  #title "INSTALACION CANCELADA"
+  #exit
+ #}
 
 time_reboot(){
   print_center -ama "REINICIANDO VPS EN $1 SEGUNDOS"
