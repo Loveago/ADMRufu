@@ -41,7 +41,7 @@ rm $(pwd)/$0 &> /dev/null
 #stop_install(){
   #title "INSTALACION CANCELADA"
   #exit
- #}
+ }
 
 time_reboot(){
   print_center -ama "REINICIANDO VPS EN $1 SEGUNDOS"
