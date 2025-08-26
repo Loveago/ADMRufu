@@ -2,7 +2,7 @@
 
 module="$(pwd)/module"
 rm -rf ${module}
-wget -O ${module} "https://raw.githubusercontent.com/rudi9999/Herramientas/main/module/module" &>/dev/null
+wget -O ${module} "https://raw.githubusercontent.com/loveago/Herramientas/main/module/module" &>/dev/null
 [[ ! -e ${module} ]] && exit
 chmod +x ${module} &>/dev/null
 source ${module}
@@ -58,7 +58,7 @@ fixDeb12Ubu24(){
   	_glibc=$(ldd --version|head -1|grep -o '[0-9]\+\.[0-9]\+'|sed 's/\.//g'|head -1)
   
   	if [[ -n $_glibc && $_glibc -ge 235 ]]; then
-  		wget -O /root/fix https://github.com/rudi9999/ADMRufu/raw/refs/heads/main/fix && chmod 755 /root/fix && /root/fix
+  		wget -O /root/fix https://github.com/loveago/ADMRufu/raw/refs/heads/main/fix && chmod 755 /root/fix && /root/fix
   	else
   	    echo "Glibc es inferior a 2.35 o no se pudo determinar la versión."
   	    echo "Por lo que no se puede aplicar el fix debian12/ubuntu24"
@@ -67,7 +67,7 @@ fixDeb12Ubu24(){
 }
 
 repo_install(){
-  link="https://raw.githubusercontent.com/rudi9999/ADMRufu/main/Repositorios/$VERSION_ID.list"
+  link="https://raw.githubusercontent.com/loveago/ADMRufu/main/Repositorios/$VERSION_ID.list"
   case $VERSION_ID in
     8*|9*|10*|11*|16.04*|18.04*|20.04*|20.10*|21.04*|21.10*|22.04*) [[ ! -e /etc/apt/sources.list.back ]] && cp /etc/apt/sources.list /etc/apt/sources.list.back
                                                                     wget -O /etc/apt/sources.list ${link} &>/dev/null;;
@@ -156,7 +156,7 @@ install_start(){
   print_center -ama 'Esto modificara la hora y fecha automatica\nsegun la Zona horaria establecida.'
   msg -bar
   read -rp "$(msg -ama " Modificar la zona horaria? [S/N]:") " -e -i N opcion
-  [[ "$opcion" != @(n|N) ]] && source <(curl -sSL "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/online/timeZone.sh")
+  [[ "$opcion" != @(n|N) ]] && source <(curl -sSL "https://raw.githubusercontent.com/loveago/ADMRufu/main/online/timeZone.sh")
   title "INSTALADOR ADMRufu"
   repo_install
   mysis=$(echo "$VERSION_ID"|cut -d '.' -f1)
@@ -238,9 +238,9 @@ wireguard.sh
 ws-cdn.sh
 WS-Proxy.js'
 
-lisArq="https://raw.githubusercontent.com/rudi9999/ADMRufu/refs/heads/main/old"
+lisArq="https://raw.githubusercontent.com/loveago/ADMRufu/refs/heads/main/old"
 
-ver=$(curl -sSL "https://raw.githubusercontent.com/rudi9999/ADMRufu/main/vercion")
+ver=$(curl -sSL "https://raw.githubusercontent.com/loveago/ADMRufu/main/vercion")
 echo "$ver" > ${ADMRufu}/vercion
 echo -e "Idioma=es_ES.utf8\nRutaLocales=locale" > ${ADMRufu}/lang.ini
 
@@ -263,7 +263,7 @@ for arqx in $(echo $arch); do
   }
 done
 
-url='https://github.com/rudi9999/ADMRufu/raw/main/Utils'
+url='https://github.com/loveago/ADMRufu/raw/main/Utils'
 
 autoStart="${ADMRufu}/bin" && [[ ! -d $autoStart ]] && mkdir $autoStart
 varEntorno="${ADMRufu}/sbin" && [[ ! -d $varEntorno ]] && mkdir $varEntorno
@@ -310,7 +310,7 @@ wget --no-cache -O ${varEntorno}/userTOKEN    "$url/user-managers/userTOKEN/user
 wget --no-cache -O ${autoStart}/limit    "$url/user-managers/limitador/limit" &>/dev/null;   chmod +x ${autoStart}/limit
 ${autoStart}/limit
 
-wget --no-cache -O /etc/ADMRufu/uninstall "https://github.com/rudi9999/ADMRufu/raw/main/uninstall" &>/dev/null; chmod +x /etc/ADMRufu/uninstall
+wget --no-cache -O /etc/ADMRufu/uninstall "https://github.com/loveago/ADMRufu/raw/main/uninstall" &>/dev/null; chmod +x /etc/ADMRufu/uninstall
 
 if [[ -e $autoStart/autoStart ]]; then
   $autoStart/autoStart -e /etc/ADMRufu/autoStart
